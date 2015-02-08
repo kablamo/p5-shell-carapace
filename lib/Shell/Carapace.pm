@@ -17,8 +17,8 @@ Shell::Carapace - cpanm style logging for shell commands
     use Shell::Carapace;
 
     my $shell = Shell::Carapace->new(
-        verbose => 1, # tee shell output to STDOUT/STDERR
-        logfile => '/path/to/file.log',
+        verbose => 1,                   # tee shell cmd output to STDOUT/STDERR
+        logfile => '/path/to/file.log', # output is always written to this file
     );
 
     my $output = $shell->local(@cmd);
@@ -32,17 +32,14 @@ Shell::Carapace - cpanm style logging for shell commands
 
 =head1 DESCRIPTION
 
-Shell::Carapace makes it easy to add cpanm style logging to your command line
-application.  It is a small wrapper around Capture::Tiny which provides logging
-and throws exceptions when commands fail.
-
-Cpanm has does a great job of not printing tons of unnecessary output to the
-screen.  However you occasionally need verbose output in order to debug
-problems.  To solve this problem cpanm also logs at a verbose level to a
-logfile.
+cpanm does a great job of not printing unnecessary output to the screen.  But
+sometimes you need verbose output in order to debug problems.  To solve this
+problem cpanm logs at a verbose level to a logfile.
 
 This module provides infrastructure so developers can easily add similar
 functionality to their command line applications.
+
+Shell::Carapace is mostly a very small wrapper around Capture::Tiny.
 
 =head1 ERROR HANDLING
 
