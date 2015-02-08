@@ -7,6 +7,15 @@ DISTRIBUTIONS
       Algorithm::Diff::_impl 1.1903
     requirements:
       ExtUtils::MakeMaker 0
+  App-cpanminus-1.7025
+    pathname: M/MI/MIYAGAWA/App-cpanminus-1.7025.tar.gz
+    provides:
+      App::cpanminus 1.7025
+    requirements:
+      ExtUtils::Install 1.46
+      ExtUtils::MakeMaker 6.58
+      Module::Build 0.38
+      perl 5.008000
   B-Hooks-OP-Check-0.19
     pathname: Z/ZE/ZEFRAM/B-Hooks-OP-Check-0.19.tar.gz
     provides:
@@ -99,6 +108,24 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
+  Config-Identity-0.0018
+    pathname: R/RO/ROKR/Config-Identity-0.0018.tar.gz
+    provides:
+      Config::Identity 0.0018
+      Config::Identity::GitHub undef
+      Config::Identity::PAUSE undef
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      File::HomeDir 0
+      File::Spec 0
+      File::Which 0
+      IPC::Run 0
+  Data-Section-Simple-0.07
+    pathname: M/MI/MIYAGAWA/Data-Section-Simple-0.07.tar.gz
+    provides:
+      Data::Section::Simple 0.07
+    requirements:
+      ExtUtils::MakeMaker 6.30
   Devel-GlobalDestruction-0.13
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.13.tar.gz
     provides:
@@ -192,6 +219,95 @@ DISTRIBUTIONS
       File::Spec 0
       strict 0
       warnings 0
+  File-Copy-Recursive-0.38
+    pathname: D/DM/DMUEY/File-Copy-Recursive-0.38.tar.gz
+    provides:
+      File::Copy::Recursive 0.38
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Copy 0
+      File::Spec 0
+  File-HomeDir-1.00
+    pathname: A/AD/ADAMK/File-HomeDir-1.00.tar.gz
+    provides:
+      File::HomeDir 1.00
+      File::HomeDir::Darwin 1.00
+      File::HomeDir::Darwin::Carbon 1.00
+      File::HomeDir::Darwin::Cocoa 1.00
+      File::HomeDir::Driver 1.00
+      File::HomeDir::FreeDesktop 1.00
+      File::HomeDir::MacOS9 1.00
+      File::HomeDir::TIE 1.00
+      File::HomeDir::Test 1.00
+      File::HomeDir::Unix 1.00
+      File::HomeDir::Windows 1.00
+    requirements:
+      Carp 0
+      Cwd 3.12
+      ExtUtils::MakeMaker 6.36
+      File::Path 2.01
+      File::Spec 3.12
+      File::Temp 0.19
+      File::Which 0.05
+      Test::More 0.47
+      perl 5.00503
+  File-Which-1.09
+    pathname: A/AD/ADAMK/File-Which-1.09.tar.gz
+    provides:
+      File::Which 1.09
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      File::Spec 0.60
+      Getopt::Std 0
+      Test::More 0.80
+      Test::Script 1.05
+  File-pushd-1.009
+    pathname: D/DA/DAGOLDEN/File-pushd-1.009.tar.gz
+    provides:
+      File::pushd 1.009
+    requirements:
+      Carp 0
+      Cwd 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      File::Path 0
+      File::Spec 0
+      File::Temp 0
+      overload 0
+      strict 0
+      warnings 0
+  IO-Tty-1.12
+    pathname: T/TO/TODDR/IO-Tty-1.12.tar.gz
+    provides:
+      IO::Pty 1.12
+      IO::Tty 1.12
+      IO::Tty::Constant undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
+  IPC-Run-0.94
+    pathname: T/TO/TODDR/IPC-Run-0.94.tar.gz
+    provides:
+      IPC::Run 0.94
+      IPC::Run::Debug 0.90
+      IPC::Run::IO 0.90
+      IPC::Run::Timer 0.90
+      IPC::Run::Win32Helper 0.90
+      IPC::Run::Win32IO 0.90
+      IPC::Run::Win32Pump 0.90
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::Pty 1.08
+      Test::More 0.47
+  IPC-Run3-0.048
+    pathname: R/RJ/RJBS/IPC-Run3-0.048.tar.gz
+    provides:
+      IPC::Run3 0.048
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0.31
+      Time::HiRes 0
   Import-Into-1.002004
     pathname: E/ET/ETHER/Import-Into-1.002004.tar.gz
     provides:
@@ -212,6 +328,82 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Minilla-v2.3.0
+    pathname: T/TO/TOKUHIROM/Minilla-v2.3.0.tar.gz
+    provides:
+      Minilla 2.003000
+      Minilla::CLI undef
+      Minilla::CLI::Build undef
+      Minilla::CLI::Clean undef
+      Minilla::CLI::Dist undef
+      Minilla::CLI::Help undef
+      Minilla::CLI::Install undef
+      Minilla::CLI::Migrate undef
+      Minilla::CLI::New undef
+      Minilla::CLI::Release undef
+      Minilla::CLI::Run undef
+      Minilla::CLI::Test undef
+      Minilla::Error::CommandExit undef
+      Minilla::Errors undef
+      Minilla::FileGatherer undef
+      Minilla::Git undef
+      Minilla::Gitignore undef
+      Minilla::License::Perl_5 undef
+      Minilla::License::Unknown undef
+      Minilla::Logger undef
+      Minilla::Metadata undef
+      Minilla::Migrate undef
+      Minilla::ModuleMaker::ExtUtilsMakeMaker undef
+      Minilla::ModuleMaker::ModuleBuild undef
+      Minilla::ModuleMaker::ModuleBuildTiny undef
+      Minilla::Profile::Base undef
+      Minilla::Profile::Default undef
+      Minilla::Profile::ExtUtilsMakeMaker undef
+      Minilla::Profile::ModuleBuild undef
+      Minilla::Profile::ModuleBuildTiny undef
+      Minilla::Profile::XS undef
+      Minilla::Project undef
+      Minilla::Release::BumpVersion undef
+      Minilla::Release::CheckChanges undef
+      Minilla::Release::CheckOrigin undef
+      Minilla::Release::CheckUntrackedFiles undef
+      Minilla::Release::Commit undef
+      Minilla::Release::DistTest undef
+      Minilla::Release::MakeDist undef
+      Minilla::Release::RegenerateFiles undef
+      Minilla::Release::RewriteChanges undef
+      Minilla::Release::RunHooks undef
+      Minilla::Release::Tag undef
+      Minilla::Release::UploadToCPAN undef
+      Minilla::ReleaseTest undef
+      Minilla::Util undef
+      Minilla::WorkDir undef
+      Module::BumpVersion undef
+    requirements:
+      App::cpanminus 1.6902
+      Archive::Tar 1.60
+      CPAN::Meta 2.132830
+      Config::Identity 0
+      Data::Section::Simple 0.04
+      ExtUtils::Manifest 1.54
+      File::Copy::Recursive 0
+      File::Which 0
+      File::pushd 0
+      Getopt::Long 2.36
+      Module::Build 0.38
+      Module::CPANfile 0.9025
+      Module::Metadata 1.000012
+      Moo 1.001
+      Pod::Markdown 1.322
+      TAP::Harness::Env 0
+      TOML 0.95
+      Term::ANSIColor 0
+      Text::MicroTemplate 0.20
+      Time::Piece 1.16
+      Try::Tiny 0
+      parent 0
+      perl 5.008005
+      version 0
   Module-Build-0.4211
     pathname: L/LE/LEONT/Module-Build-0.4211.tar.gz
     provides:
@@ -286,6 +478,33 @@ DISTRIBUTIONS
       TAP::Harness::Env 0
       perl 5.006
       strict 0
+      warnings 0
+  Module-CPANfile-1.1000
+    pathname: M/MI/MIYAGAWA/Module-CPANfile-1.1000.tar.gz
+    provides:
+      Module::CPANfile 1.1000
+      Module::CPANfile::Environment undef
+      Module::CPANfile::Prereq undef
+      Module::CPANfile::Prereqs undef
+      Module::CPANfile::Requirement undef
+    requirements:
+      CPAN::Meta 2.12091
+      CPAN::Meta::Prereqs 2.12091
+      ExtUtils::MakeMaker 0
+      parent 0
+  Module-Metadata-1.000026
+    pathname: E/ET/ETHER/Module-Metadata-1.000026.tar.gz
+    provides:
+      Module::Metadata 1.000026
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      File::Find 0
+      File::Spec 0
+      perl 5.006
+      strict 0
+      version 0.87
       warnings 0
   Module-Runtime-0.014
     pathname: Z/ZE/ZEFRAM/Module-Runtime-0.014.tar.gz
@@ -385,23 +604,26 @@ DISTRIBUTIONS
       File::Basename 0
       Scalar::Util 0
       Test 0
-  PerlIO-Util-0.72
-    pathname: G/GF/GFUJI/PerlIO-Util-0.72.tar.gz
+  Pod-Markdown-2.002
+    pathname: R/RW/RWSTAUNER/Pod-Markdown-2.002.tar.gz
     provides:
-      PerlIO::Util 0.72
-      PerlIO::creat undef
-      PerlIO::dir undef
-      PerlIO::excl undef
-      PerlIO::flock undef
-      PerlIO::reverse undef
-      PerlIO::tee undef
+      Pod::Markdown 2.002
     requirements:
-      Devel::PPPort 3.19
-      ExtUtils::MakeMaker 6.42
-      ExtUtils::ParseXS 2.21
-      Test::More 0.62
-      XSLoader 0.02
-      perl 5.008001
+      ExtUtils::MakeMaker 6.30
+      Pod::Simple 3.14
+      Pod::Simple::Methody 0
+      parent 0
+      strict 0
+      warnings 0
+  Probe-Perl-0.03
+    pathname: K/KW/KWILLIAMS/Probe-Perl-0.03.tar.gz
+    provides:
+      Probe::Perl 0.03
+    requirements:
+      Config 0
+      ExtUtils::MakeMaker 6.30
+      File::Spec 0
+      strict 0
   Role-Tiny-1.003004
     pathname: H/HA/HAARG/Role-Tiny-1.003004.tar.gz
     provides:
@@ -434,6 +656,31 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  TOML-0.95
+    pathname: K/KA/KARUPA/TOML-0.95.tar.gz
+    provides:
+      TOML 0.95
+    requirements:
+      Module::Build::Tiny 0.035
+      TOML::Parser 0.04
+      parent 0
+      perl 5.008005
+  TOML-Parser-0.04
+    pathname: K/KA/KARUPA/TOML-Parser-0.04.tar.gz
+    provides:
+      TOML::Parser 0.04
+      TOML::Parser::Tokenizer undef
+      TOML::Parser::Tokenizer::Strict undef
+      TOML::Parser::Util undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Encode 0
+      Module::Build 0
+      Module::Build::Tiny 0.035
+      Types::Serialiser 0
+      parent 0
+      perl 5.008005
   Test-Deep-0.115
     pathname: R/RJ/RJBS/Test-Deep-0.115.tar.gz
     provides:
@@ -580,6 +827,19 @@ DISTRIBUTIONS
       Test::Harness 3.21
       Test::More 0.88
       Test::Warn 0.23
+  Test-Script-1.07
+    pathname: A/AD/ADAMK/Test-Script-1.07.tar.gz
+    provides:
+      Test::Script 1.07
+    requirements:
+      ExtUtils::MakeMaker 6.42
+      File::Spec 0.80
+      IPC::Run3 0.034
+      Probe::Perl 0.01
+      Test::Builder 0.32
+      Test::Builder::Tester 1.02
+      Test::More 0.62
+      blib 0
   Test-Warn-0.30
     pathname: C/CH/CHORNY/Test-Warn-0.30.tar.gz
     provides:
@@ -605,6 +865,17 @@ DISTRIBUTIONS
       Algorithm::Diff 1.19
       Exporter 0
       ExtUtils::MakeMaker 0
+  Text-MicroTemplate-0.20
+    pathname: K/KA/KAZUHO/Text-MicroTemplate-0.20.tar.gz
+    provides:
+      Text::MicroTemplate 0.20
+      Text::MicroTemplate::EncodedString 0.20
+      Text::MicroTemplate::File undef
+    requirements:
+      ExtUtils::MakeMaker 6.42
+      File::Temp 0
+      Test::More 0
+      perl 5.00800
   Try-Tiny-0.22
     pathname: D/DO/DOY/Try-Tiny-0.22.tar.gz
     provides:
@@ -614,19 +885,6 @@ DISTRIBUTIONS
       Exporter 5.57
       ExtUtils::MakeMaker 6.30
       constant 0
-      strict 0
-      warnings 0
-  Try-Tiny-Retry-0.004
-    pathname: D/DA/DAGOLDEN/Try-Tiny-Retry-0.004.tar.gz
-    provides:
-      Try::Tiny::Retry 0.004
-    requirements:
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      Time::HiRes 0
-      Try::Tiny 0
-      parent 0
       strict 0
       warnings 0
   Type-Tiny-1.000005
@@ -684,6 +942,16 @@ DISTRIBUTIONS
       Types::TypeTiny 0.004
       strict 0
       warnings 0
+  Types-Serialiser-1.0
+    pathname: M/ML/MLEHMANN/Types-Serialiser-1.0.tar.gz
+    provides:
+      JSON::PP::Boolean 1.0
+      Types::Serialiser 1.0
+      Types::Serialiser::BooleanBase 1.0
+      Types::Serialiser::Error 1.0
+    requirements:
+      ExtUtils::MakeMaker 0
+      common::sense 0
   bareword-filehandles-0.003
     pathname: I/IL/ILMARI/bareword-filehandles-0.003.tar.gz
     provides:
@@ -695,6 +963,12 @@ DISTRIBUTIONS
       Lexical::SealRequireHints 0
       Test::More 0.88
       XSLoader 0
+  common-sense-3.73
+    pathname: M/ML/MLEHMANN/common-sense-3.73.tar.gz
+    provides:
+      common::sense 3.73
+    requirements:
+      ExtUtils::MakeMaker 0
   indirect-0.33
     pathname: V/VP/VPIT/indirect-0.33.tar.gz
     provides:

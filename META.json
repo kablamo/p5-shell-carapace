@@ -1,10 +1,10 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "cpanm style logging for shell commands",
    "author" : [
       "Eric Johnson <eric.git@iijo.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.2.1, CPAN::Meta::Converter version 2.143240",
+   "generated_by" : "Minilla/v2.3.0, CPAN::Meta::Converter version 2.143240",
    "license" : [
       "perl_5"
    ],
@@ -26,6 +26,11 @@
       ]
    },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Minilla" : "0"
+         }
+      },
       "configure" : {
          "requires" : {
             "Module::Build::Tiny" : "0.035"
@@ -42,15 +47,20 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008001"
+            "Capture::Tiny" : "0",
+            "Moo" : "0",
+            "Path::Tiny" : "0",
+            "String::ShellQuote" : "0",
+            "Types::Path::Tiny" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::Most" : "0"
          }
       }
    },
    "release_status" : "unstable",
-   "version" : "0.01"
+   "version" : "0.01",
+   "x_authority" : "cpan:KABLAMO"
 }
