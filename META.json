@@ -61,6 +61,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kablamo/p5-shell-carapace/issues"
+      },
+      "homepage" : "https://github.com/kablamo/p5-shell-carapace",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/kablamo/p5-shell-carapace.git",
+         "web" : "https://github.com/kablamo/p5-shell-carapace"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:KABLAMO"
 }
