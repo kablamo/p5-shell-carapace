@@ -26,7 +26,7 @@ Shell::Carapace - cpanm style logging for shell commands
 
     # Useful for testing:
     # The noop attr tells local() to not run the shell cmd
-    # Instead local() will return the cmd as a quote sring
+    # Instead local() will return the cmd as a quoted string
     $shell->noop(1);
     my $cmd = $shell->local(@cmd);
 
