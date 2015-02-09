@@ -121,8 +121,5 @@ it under the same terms as Perl itself.
 
 Eric Johnson E<lt>eric.git@iijo.orgE<gt>
 
-But most of the code is heavily borrowed from Miyagawa's excellent
-App::cpanminus module.
-
 =cut
 
