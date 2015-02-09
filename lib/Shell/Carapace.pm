@@ -95,12 +95,11 @@ sub local {
 
 =over 4
 
+=item Shell::Cmd
+
 =item Capture::Tiny::Extended
 
 =item Net::OpenSSH
-
-Net::OpenSSH has better performance because it uses a single ssh connection for
-the life of the object.  Its a mature project with lots of functionality.  
 
 =item Capture::Tiny
 
