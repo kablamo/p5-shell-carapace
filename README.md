@@ -48,7 +48,7 @@ code.
 - Capture::Tiny
 - IPC::System::Simple
 
-# About the name
+# ABOUT THE NAME
 
 Carapace: n. A protective, shell-like covering likened to that of a turtle or crustacean
 
