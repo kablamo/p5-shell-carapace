@@ -19,6 +19,12 @@ subtest 'string' => sub {
     is $logfile->slurp_utf8(), ">> echo hi there\nhi there\n", "log file";
 };
 
-$logfile->remove();
+subtest 'no logfile' => sub {
+    $logfile->remove();
+    $shell->clear_logfile();
+    my $output = $shell->local(qw/echo hi there/);
+    is $output, "hi there\n", "return value";
+    ok !$logfile->exists, "did not create a log file";
+};
 
 done_testing;

@@ -18,7 +18,7 @@ Shell::Carapace - cpanm style logging for shell commands
 
     my $shell = Shell::Carapace->new(
         verbose => 1,                   # tee shell cmd output to STDOUT/STDERR
-        logfile => '/path/to/file.log', # output is always written to this file
+        logfile => '/path/to/file.log', # log cmd output
     );
 
     my $output = $shell->local(@cmd);
@@ -52,7 +52,7 @@ has verbose     => (is => 'rw', default => sub { 0 });
 has print_cmd   => (is => 'ro', default => sub { 0 });
 has ssh_cmd     => (is => 'lazy', default => sub { '/usr/bin/ssh' });
 has ssh_options => (is => 'lazy', default => sub { [] });
-has logfile     => (is => 'rw', isa => Path, coerce => 1, required => 1);
+has logfile     => (is => 'rw', isa => Path, coerce => 1, clearer => 1);
 has noop        => (is => 'rw', default => sub { 0 });
 
 sub remote {
@@ -80,9 +80,11 @@ sub local {
         ? tee_merged     { system @cmd }
         : capture_merged { system @cmd };
 
-    $self->logfile->touchpath;
-    $self->logfile->append_utf8(">> " . join(" ", @cmd) . "\n");
-    $self->logfile->append_utf8($merged_out);
+    if ($self->logfile) {
+        $self->logfile->touchpath;
+        $self->logfile->append_utf8(">> " . join(" ", @cmd) . "\n");
+        $self->logfile->append_utf8($merged_out);
+    }
 
     die "\n" if $exit;
 
