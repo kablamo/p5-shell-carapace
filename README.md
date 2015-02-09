@@ -9,7 +9,7 @@ Shell::Carapace - cpanm style logging for shell commands
 
     my $shell = Shell::Carapace->new(
         verbose => 1,                   # tee shell cmd output to STDOUT/STDERR
-        logfile => '/path/to/file.log', # output is always written to this file
+        logfile => '/path/to/file.log', # log cmd output
     );
 
     my $output = $shell->local(@cmd);
@@ -17,7 +17,7 @@ Shell::Carapace - cpanm style logging for shell commands
 
     # Useful for testing:
     # The noop attr tells local() to not run the shell cmd
-    # Instead local() will return the cmd as a quote sring
+    # Instead local() will return the cmd as a quoted string
     $shell->noop(1);
     my $cmd = $shell->local(@cmd);
 
