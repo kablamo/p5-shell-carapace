@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/kablamo/p5-shell-carapace.svg?branch=master)](https://travis-ci.org/kablamo/p5-shell-carapace)
 # NAME
 
 Shell::Carapace - cpanm style logging for shell commands
@@ -59,6 +60,3 @@ it under the same terms as Perl itself.
 # AUTHOR
 
 Eric Johnson <eric.git@iijo.org>
-
-But most of the code is heavily borrowed from Miyagawa's excellent
-App::cpanminus module.
