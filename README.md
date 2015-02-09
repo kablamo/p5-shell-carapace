@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/kablamo/p5-shell-carapace.svg?branch=master)](https://travis-ci.org/kablamo/p5-shell-carapace)
+[![Build Status](https://travis-ci.org/kablamo/p5-shell-carapace.svg?branch=master)](https://travis-ci.org/kablamo/p5-shell-carapace) [![Coverage Status](https://img.shields.io/coveralls/kablamo/p5-shell-carapace/master.svg)](https://coveralls.io/r/kablamo/p5-shell-carapace?branch=master)
 # NAME
 
 Shell::Carapace - cpanm style logging for shell commands
@@ -48,7 +48,7 @@ code.
 - Capture::Tiny
 - IPC::System::Simple
 
-# ABOUT THE NAME
+# About the name
 
 Carapace: n. A protective, shell-like covering likened to that of a turtle or crustacean
 
