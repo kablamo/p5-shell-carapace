@@ -3,6 +3,7 @@ use feature qw/say/;
 use Moo;
 
 use Capture::Tiny qw/:all/;
+use Types::Standard qw/Maybe/;
 use Types::Path::Tiny qw/Path/;
 use String::ShellQuote;
 
@@ -52,7 +53,7 @@ has verbose     => (is => 'rw', default => sub { 0 });
 has print_cmd   => (is => 'ro', default => sub { 0 });
 has ssh_cmd     => (is => 'lazy', default => sub { '/usr/bin/ssh' });
 has ssh_options => (is => 'lazy', default => sub { [] });
-has logfile     => (is => 'rw', isa => Path, coerce => 1, clearer => 1);
+has logfile     => (is => 'rw', isa => Maybe[Path], coerce => 1, clearer => 1);
 has noop        => (is => 'rw', default => sub { 0 });
 
 sub remote {
