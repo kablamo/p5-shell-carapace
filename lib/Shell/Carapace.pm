@@ -6,7 +6,7 @@ use Capture::Tiny qw/:all/;
 use Types::Path::Tiny qw/Path/;
 use String::ShellQuote;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 =head1 NAME
 
