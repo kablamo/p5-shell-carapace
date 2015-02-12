@@ -63,6 +63,9 @@ before logfile => sub {
 
     die "Logfile is not writeable: $logfile\n"
         unless -w $logfile;
+
+    die "Logfile is not a file: $logfile\n"
+        unless -f $logfile;
 };
 
 sub remote {
