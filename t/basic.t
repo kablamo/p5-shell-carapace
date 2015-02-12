@@ -3,7 +3,7 @@ use Shell::Carapace;
 use Path::Tiny;
 
 my $logfile = path('t/boop.log');
-my $shell   = Shell::Carapace->new(logfile => $logfile);
+my $shell   = Shell::Carapace->new(logfile => $logfile->stringify);
 
 subtest 'list' => sub {
     $logfile->remove();

@@ -53,7 +53,7 @@ has verbose     => (is => 'rw', default => sub { 0 });
 has print_cmd   => (is => 'ro', default => sub { 0 });
 has ssh_cmd     => (is => 'lazy', default => sub { '/usr/bin/ssh' });
 has ssh_options => (is => 'lazy', default => sub { [] });
-has logfile     => (is => 'rw', isa => Maybe[Path], coerce => 1, clearer => 1);
+has logfile     => (is => 'rw', isa => Maybe[Path], coerce => Path->coercion, clearer => 1);
 has noop        => (is => 'rw', default => sub { 0 });
 
 sub remote {
