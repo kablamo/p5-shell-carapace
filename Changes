@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.06 2015-02-12T15:28:05Z
+    - Die earlier if logfile has bad permissions
+
 0.05 2015-02-12T00:09:13Z
     - Don't use 'coerce => 1' so Shell::Carapace is compatible with 
       Moo <1.006000
