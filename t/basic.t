@@ -19,6 +19,13 @@ subtest 'string' => sub {
     is $logfile->slurp_utf8(), ">> echo hi there\nhi there\n", "log file";
 };
 
+subtest 'logfile not writable' => sub {
+    $logfile->remove();
+    $logfile->touchpath();
+    system("chmod u-w $logfile");
+    dies_ok { $shell->logfile($logfile) } 'dies';
+};
+
 subtest 'no logfile' => sub {
     $logfile->remove();
     $shell->clear_logfile();

@@ -56,6 +56,15 @@ has ssh_options => (is => 'lazy', default => sub { [] });
 has logfile     => (is => 'rw', isa => Maybe[Path], coerce => Path->coercion, clearer => 1);
 has noop        => (is => 'rw', default => sub { 0 });
 
+before logfile => sub {
+    my ($self, $logfile) = @_;
+    
+    return unless $logfile;
+
+    die "Logfile is not writeable: $logfile\n"
+        unless -w $logfile;
+};
+
 sub remote {
     my ($self, $user, $host, @cmd) = @_;
 
