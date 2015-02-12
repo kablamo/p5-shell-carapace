@@ -51,7 +51,8 @@
             "Moo" : "0",
             "Path::Tiny" : "0",
             "String::ShellQuote" : "0",
-            "Types::Path::Tiny" : "0"
+            "Types::Path::Tiny" : "0",
+            "Types::Standard" : "0"
          }
       },
       "test" : {
@@ -72,6 +73,6 @@
          "web" : "https://github.com/kablamo/p5-shell-carapace"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_authority" : "cpan:KABLAMO"
 }

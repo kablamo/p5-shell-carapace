@@ -1,20 +1,20 @@
-Revision history for Perl extension Shell-Carapace
+Revision history for Shell-Carapace
 
 {{$NEXT}}
 
-0.04 2015-02-09T18:54:46Z
+0.05 2015-02-12T00:09:13Z
+    - Don't use 'coerce => 1' so Shell::Carapace is compatible with 
+      Moo <1.006000
 
+0.04 2015-02-09T18:54:46Z
     - allow lgofile attr to be undef
 
 0.03 2015-02-09T14:25:24Z
-
     - made logging to a file optional
 
 0.02 2015-02-09T11:06:44Z
-
     - minor updates to pod
 
 0.01 2015-02-08T23:37:48Z
-
     - original version
 
