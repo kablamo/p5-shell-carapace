@@ -9,7 +9,7 @@ Shell::Carapace - cpanm style logging for shell commands
 
     my $shell = Shell::Carapace->new(
         verbose => 1,                   # tee shell cmd output to STDOUT/STDERR
-        logfile => '/path/to/file.log', # log cmd output
+        logfile => '/path/to/file.log', # tee shell cmd output to logfile
     );
 
     my $output = $shell->local(@cmd);
@@ -43,10 +43,9 @@ Doesn't work on win32.
 
 # SEE ALSO
 
-- Shell::Cmd
-- Capture::Tiny::Extended
-- Net::OpenSSH
 - Capture::Tiny
+- Shell::Cmd
+- Net::OpenSSH
 - IPC::System::Simple
 
 # About the name

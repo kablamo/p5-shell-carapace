@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.09 2015-02-18T20:30:00Z
+    - Tee output to the log file.  This time the exit code is preserved.
+
 0.08 2015-02-18T15:42:16Z
     - Revert most of 0.07.  Piping to tee means we can't know what the exit
       code of the command is.  Added a test so this case isn't missed in the
