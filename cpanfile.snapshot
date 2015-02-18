@@ -7,10 +7,10 @@ DISTRIBUTIONS
       Algorithm::Diff::_impl 1.1903
     requirements:
       ExtUtils::MakeMaker 0
-  App-cpanminus-1.7025
-    pathname: M/MI/MIYAGAWA/App-cpanminus-1.7025.tar.gz
+  App-cpanminus-1.7027
+    pathname: M/MI/MIYAGAWA/App-cpanminus-1.7027.tar.gz
     provides:
-      App::cpanminus 1.7025
+      App::cpanminus 1.7027
     requirements:
       ExtUtils::Install 1.46
       ExtUtils::MakeMaker 6.58
@@ -50,10 +50,10 @@ DISTRIBUTIONS
       strict 0
       version 0.88
       warnings 0
-  Capture-Tiny-0.27
-    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.27.tar.gz
+  Capture-Tiny-0.28
+    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.28.tar.gz
     provides:
-      Capture::Tiny 0.27
+      Capture::Tiny 0.28
     requirements:
       Carp 0
       Exporter 0
@@ -183,15 +183,16 @@ DISTRIBUTIONS
       Text::ParseWords 3.24
       strict 0
       warnings 0
-  ExtUtils-InstallPaths-0.010
-    pathname: L/LE/LEONT/ExtUtils-InstallPaths-0.010.tar.gz
+  ExtUtils-InstallPaths-0.011
+    pathname: L/LE/LEONT/ExtUtils-InstallPaths-0.011.tar.gz
     provides:
-      ExtUtils::InstallPaths 0.010
+      ExtUtils::InstallPaths 0.011
     requirements:
       Carp 0
       ExtUtils::Config 0.002
-      ExtUtils::MakeMaker 6.30
+      ExtUtils::MakeMaker 0
       File::Spec 0
+      perl 5.006
       strict 0
       warnings 0
   File-Copy-Recursive-0.38
