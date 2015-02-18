@@ -104,11 +104,11 @@ sub local {
         $self->logfile->touchpath;
         $self->logfile->append_utf8(">> $cmd_str\n");
 
-        ($merged_out, $exit) = $self->verbose
-            ? tee_merged     { system @cmd }
-            : capture_merged { system @cmd };
+        my $fh = $self->logfile->filehandle('+>>');
 
-        $self->logfile->append_utf8($merged_out);
+        ($merged_out, $exit) = $self->verbose
+            ? tee_merged     { system @cmd } stdout => $fh
+            : capture_merged { system @cmd } stdout => $fh;
     }
     else {
         ($merged_out, $exit) = $self->verbose
@@ -133,13 +133,11 @@ sub _stringify {
 
 =over 4
 
+=item Capture::Tiny
+
 =item Shell::Cmd
 
-=item Capture::Tiny::Extended
-
 =item Net::OpenSSH
-
-=item Capture::Tiny
 
 =item IPC::System::Simple
 
