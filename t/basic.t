@@ -12,6 +12,10 @@ subtest 'list' => sub {
     is $logfile->slurp_utf8(), ">> echo hi there\nhi there\n", "log file";
 };
 
+subtest 'dies ok' => sub {
+    dies_ok { $shell->local(qw/ls sdflk823jfsk3adffsupercalifragilistic/) } 'dead';
+};
+
 subtest 'string' => sub {
     $logfile->remove();
     my $output = $shell->local('echo hi there');
