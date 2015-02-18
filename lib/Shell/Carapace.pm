@@ -49,14 +49,6 @@ code.
 
 =head1 CAVEATS
 
-There isn't a good Perly way to tee output to both stdout and a log file.  To
-enable this feature this module pipes your cmd to "tee -a $logfile".  This will
-fail if you don't have tee in your $PATH.
-
-You can disable this behavior by setting the 'tee_logfile' attribute to false.
-In that case, command output will get written to the logfile only after the
-command completes instead of in real time.
-
 Doesn't work on win32.
 
 =cut
@@ -107,28 +99,21 @@ sub local {
     my $merged_out;
     my $exit;
 
-    if ($self->logfile && $self->tee_logfile) {
+    if ($self->logfile) {
         my $cmd_str = $self->_stringify(@cmd);
         $self->logfile->touchpath;
         $self->logfile->append_utf8(">> $cmd_str\n");
 
-        $cmd_str = "($cmd_str) | tee -a " . shell_quote($self->logfile);
-
         ($merged_out, $exit) = $self->verbose
-            ? tee_merged     { system $cmd_str }
-            : capture_merged { system $cmd_str };
+            ? tee_merged     { system @cmd }
+            : capture_merged { system @cmd };
+
+        $self->logfile->append_utf8($merged_out);
     }
     else {
         ($merged_out, $exit) = $self->verbose
             ? tee_merged     { system @cmd }
             : capture_merged { system @cmd };
-    }
-
-    if ($self->logfile && !$self->tee_logfile) {
-        my $cmd_str = $self->_stringify(@cmd);
-        $self->logfile->touchpath;
-        $self->logfile->append_utf8(">> $cmd_str\n");
-        $self->logfile->append_utf8($merged_out);
     }
 
     die "\n" if $exit;
