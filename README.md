@@ -39,14 +39,6 @@ code.
 
 # CAVEATS
 
-There isn't a good Perly way to tee output to both stdout and a log file.  To
-enable this feature this module pipes your cmd to "tee -a $logfile".  This will
-fail if you don't have tee in your $PATH.
-
-You can disable this behavior by setting the 'tee\_logfile' attribute to false.
-In that case, command output will get written to the logfile only after the
-command completes instead of in real time.
-
 Doesn't work on win32.
 
 # SEE ALSO
