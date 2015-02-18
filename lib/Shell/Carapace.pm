@@ -22,18 +22,14 @@ Shell::Carapace - cpanm style logging for shell commands
         logfile => '/path/to/file.log', # log cmd output
     );
 
-    my $cmd = "echo hi there";     # passed to the shell as is
-    # OR
-    my $cmd = [qw/echo hi there/]; # shell quotes stuff
-
-    my $output = $shell->local($cmd);
-    my $output = $shell->remote($user, $host, $cmd);
+    my $output = $shell->local(@cmd);
+    my $output = $shell->remote($user, $host, @cmd);
 
     # Useful for testing:
     # The noop attr tells local() to not run the shell cmd
     # Instead local() will return the cmd as a quoted string
     $shell->noop(1);
-    my $cmd = $shell->local($cmd);
+    my $cmd = $shell->local(@cmd);
 
 =head1 DESCRIPTION
 
@@ -51,23 +47,17 @@ Shell::Carapace is mostly a small wrapper around Capture::Tiny.
 local() and remote() both die if a command fails by returning a positive exit
 code. 
 
-=head1 SHELL QUOTES
-
-If you pass 
-
 =head1 CAVEATS
 
 There isn't a good Perly way to tee output to both stdout and a log file.  To
-enable this feature the module pipes your cmd to "/usr/bin/tee -a $logfile".
-In order to do this it has to convert your cmd to a string -- even if you
-passed it in as an array. The code does use String::ShellQuote::quote() so this
-should work most of the time.  
+enable this feature this module pipes your cmd to "tee -a $logfile".  This will
+fail if you don't have tee in your $PATH.
 
-If you hate this, you can disable this behavior by setting the 'tee_logfile'
-attribute to false.  In that case, command output will get written to the
-logfile only after the command completes instead of in real time.
+You can disable this behavior by setting the 'tee_logfile' attribute to false.
+In that case, command output will get written to the logfile only after the
+command completes instead of in real time.
 
-No support for win32.
+Doesn't work on win32.
 
 =cut
 
@@ -97,28 +87,28 @@ before logfile => sub {
 };
 
 sub remote {
-    my ($self, $user, $host, $cmd) = @_;
+    my ($self, $user, $host, @cmd) = @_;
 
     my $ssh_opts = $self->ssh_options;
-    my $ssh_cmd  = ref $cmd eq 'ARRAY'
-        ? [$self->ssh_cmd, "$user\@$host", @$ssh_opts, @$cmd]
-        : join(" ", $self->ssh_cmd, "$user\@$host", @$ssh_opts, $cmd);
+    my @ssh_cmd  = @cmd == 1
+        ? (join(" ", $self->ssh_cmd, "$user\@$host", @$ssh_opts, @cmd))
+        : ($self->ssh_cmd, "$user\@$host", @$ssh_opts, @cmd);
 
-    $self->local($ssh_cmd);
+    $self->local(@ssh_cmd);
 }
 
 sub local {
-    my ($self, $cmd) = @_; 
+    my ($self, @cmd) = @_; 
 
-    say ">> " . $self->_stringify($cmd) if $self->verbose || $self->print_cmd;
+    say ">> " . $self->_stringify(@cmd) if $self->verbose || $self->print_cmd;
 
-    return $self->_stringify($cmd) if $self->noop;
+    return $self->_stringify(@cmd) if $self->noop;
 
     my $merged_out;
     my $exit;
 
     if ($self->logfile && $self->tee_logfile) {
-        my $cmd_str = $self->_stringify($cmd);
+        my $cmd_str = $self->_stringify(@cmd);
         $self->logfile->touchpath;
         $self->logfile->append_utf8(">> $cmd_str\n");
 
@@ -129,14 +119,13 @@ sub local {
             : capture_merged { system $cmd_str };
     }
     else {
-        my @cmd_array = ref $cmd eq 'ARRAY' ? @$cmd : ($cmd);
         ($merged_out, $exit) = $self->verbose
-            ? tee_merged     { system @cmd_array }
-            : capture_merged { system @cmd_array };
+            ? tee_merged     { system @cmd }
+            : capture_merged { system @cmd };
     }
 
     if ($self->logfile && !$self->tee_logfile) {
-        my $cmd_str = $self->_stringify($cmd);
+        my $cmd_str = $self->_stringify(@cmd);
         $self->logfile->touchpath;
         $self->logfile->append_utf8(">> $cmd_str\n");
         $self->logfile->append_utf8($merged_out);
@@ -148,9 +137,9 @@ sub local {
 }
 
 sub _stringify {
-    my ($self, $cmd) = @_;
-    return join(" ", shell_quote @$cmd) if ref $cmd eq 'ARRAY';
-    return $cmd;
+    my ($self, @cmd) = @_;
+    return $cmd[0] if @cmd == 1;
+    return join(" ", shell_quote @cmd);
 }
 
 1;
