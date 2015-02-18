@@ -96,8 +96,7 @@ sub local {
 
     return $self->_stringify(@cmd) if $self->noop;
 
-    my $merged_out;
-    my $exit;
+    my %args;
 
     if ($self->logfile) {
         my $cmd_str = $self->_stringify(@cmd);
@@ -105,16 +104,12 @@ sub local {
         $self->logfile->append_utf8(">> $cmd_str\n");
 
         my $fh = $self->logfile->filehandle('+>>');
+        %args = (stdout => $fh);
+    }
 
-        ($merged_out, $exit) = $self->verbose
-            ? tee_merged     { system @cmd } stdout => $fh
-            : capture_merged { system @cmd } stdout => $fh;
-    }
-    else {
-        ($merged_out, $exit) = $self->verbose
-            ? tee_merged     { system @cmd }
-            : capture_merged { system @cmd };
-    }
+    my ($merged_out, $exit) = $self->verbose
+        ? tee_merged     { system @cmd } %args
+        : capture_merged { system @cmd } %args;
 
     die "\n" if $exit;
 
