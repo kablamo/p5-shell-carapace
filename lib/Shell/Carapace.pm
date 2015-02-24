@@ -54,7 +54,7 @@ Doesn't work on win32.
 =cut
 
 has verbose     => (is => 'rw',   default => sub { 0 });
-has print_cmd   => (is => 'ro',   default => sub { 0 });
+has print_cmd   => (is => 'rw',   default => sub { 0 });
 has ssh_cmd     => (is => 'lazy', default => sub { '/usr/bin/ssh' });
 has ssh_options => (is => 'lazy', default => sub { [] });
 has noop        => (is => 'rw', default => sub { 0 });
