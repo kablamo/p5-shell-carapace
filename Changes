@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.10 2015-02-24T22:02:17Z
+    - Made print_cmd attribute read/write.
+
 0.09 2015-02-18T20:30:00Z
     - Tee output to the log file.  This time the exit code is preserved.
 
