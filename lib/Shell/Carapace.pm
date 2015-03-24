@@ -96,10 +96,10 @@ sub local {
 
     return $self->_stringify(@cmd) if $self->noop;
 
+    my $cmd_str = $self->_stringify(@cmd);
     my %args;
 
     if ($self->logfile) {
-        my $cmd_str = $self->_stringify(@cmd);
         $self->logfile->touchpath;
         $self->logfile->append_utf8(">> $cmd_str\n");
 
@@ -111,7 +111,7 @@ sub local {
         ? tee_merged     { system @cmd } %args
         : capture_merged { system @cmd } %args;
 
-    die "\n" if $exit;
+    die "ERROR shell command failed:\n  $cmd_str\n" if $exit;
 
     return $merged_out;
 }

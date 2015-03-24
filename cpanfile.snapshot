@@ -83,6 +83,23 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
+  Compiler-Lexer-0.22
+    pathname: G/GO/GOCCY/Compiler-Lexer-0.22.tar.gz
+    provides:
+      Compiler::Lexer 0.22
+      Compiler::Lexer::Kind undef
+      Compiler::Lexer::SyntaxType undef
+      Compiler::Lexer::Token undef
+      Compiler::Lexer::TokenType undef
+    requirements:
+      Devel::PPPort 3.19
+      ExtUtils::MakeMaker 6.59
+      ExtUtils::ParseXS 2.21
+      Module::Build 0.38
+      Module::Build::XSUtil 0.02
+      Test::More 0
+      XSLoader 0.02
+      perl 5.008001
   Config-Identity-0.0018
     pathname: R/RO/ROKR/Config-Identity-0.0018.tar.gz
     provides:
@@ -101,6 +118,22 @@ DISTRIBUTIONS
       Data::Section::Simple 0.07
     requirements:
       ExtUtils::MakeMaker 6.30
+  Devel-CheckCompiler-0.05
+    pathname: S/SY/SYOHEX/Devel-CheckCompiler-0.05.tar.gz
+    provides:
+      Devel::AssertC99 undef
+      Devel::CheckCompiler 0.05
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Exporter 0
+      ExtUtils::CBuilder 0
+      File::Temp 0
+      Module::Build 0.38
+      Test::More 0.98
+      Test::Requires 0
+      parent 0
+      perl 5.008001
   Devel-GlobalDestruction-0.13
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.13.tar.gz
     provides:
@@ -203,6 +236,30 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       File::Copy 0
       File::Spec 0
+  File-Find-Rule-0.33
+    pathname: R/RC/RCLAMP/File-Find-Rule-0.33.tar.gz
+    provides:
+      File::Find::Rule 0.33
+      File::Find::Rule::Test::ATeam undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Find 0
+      File::Spec 0
+      Number::Compare 0
+      Test::More 0
+      Text::Glob 0.07
+  File-Find-Rule-Perl-1.13
+    pathname: A/AD/ADAMK/File-Find-Rule-Perl-1.13.tar.gz
+    provides:
+      File::Find::Rule::Perl 1.13
+    requirements:
+      ExtUtils::MakeMaker 6.36
+      File::Find::Rule 0.20
+      File::Spec 0.82
+      Params::Util 0.38
+      Parse::CPAN::Meta 1.38
+      Test::More 0.47
+      perl 5.00503
   File-HomeDir-1.00
     pathname: A/AD/ADAMK/File-HomeDir-1.00.tar.gz
     provides:
@@ -445,6 +502,21 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Module-Build-XSUtil-0.14
+    pathname: H/HI/HIDEAKIO/Module-Build-XSUtil-0.14.tar.gz
+    provides:
+      Module::Build::XSUtil 0.14
+    requirements:
+      Devel::CheckCompiler 0.02
+      Devel::PPPort 3.19
+      Exporter 0
+      ExtUtils::CBuilder 0
+      File::Basename 0
+      File::Path 0
+      Module::Build 0.4005
+      XSLoader 0.02
+      parent 0
+      perl 5.008005
   Module-CPANfile-1.1000
     pathname: M/MI/MIYAGAWA/Module-CPANfile-1.1000.tar.gz
     provides:
@@ -500,6 +572,24 @@ DISTRIBUTIONS
       Scalar::Util 0
       perl 5.006
       strictures 1.004003
+  Number-Compare-0.03
+    pathname: R/RC/RCLAMP/Number-Compare-0.03.tar.gz
+    provides:
+      Number::Compare 0.03
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
+  Params-Util-1.07
+    pathname: A/AD/ADAMK/Params-Util-1.07.tar.gz
+    provides:
+      Params::Util 1.07
+    requirements:
+      ExtUtils::CBuilder 0.27
+      ExtUtils::MakeMaker 6.52
+      File::Spec 0.80
+      Scalar::Util 1.18
+      Test::More 0.42
+      perl 5.00503
   Path-Tiny-0.061
     pathname: D/DA/DAGOLDEN/Path-Tiny-0.061.tar.gz
     provides:
@@ -524,6 +614,14 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Perl-MinimumVersion-Fast-0.17
+    pathname: T/TO/TOKUHIROM/Perl-MinimumVersion-Fast-0.17.tar.gz
+    provides:
+      Perl::MinimumVersion::Fast 0.17
+    requirements:
+      Compiler::Lexer 0.17
+      Module::Build 0.38
+      perl 5.008005
   Pod-Markdown-2.002
     pathname: R/RW/RWSTAUNER/Pod-Markdown-2.002.tar.gz
     provides:
@@ -679,6 +777,23 @@ DISTRIBUTIONS
       Test::Harness 2.03
       Test::More 0.7
       Test::Simple 0.7
+  Test-MinimumVersion-Fast-0.04
+    pathname: T/TO/TOKUHIROM/Test-MinimumVersion-Fast-0.04.tar.gz
+    provides:
+      Test::MinimumVersion::Fast 0.04
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      ExtUtils::CBuilder 0
+      File::Find::Rule 0
+      File::Find::Rule::Perl 0
+      Module::Build 0.38
+      Perl::MinimumVersion::Fast 0.14
+      Test::Builder 0
+      YAML::Tiny 1.40
+      parent 0
+      perl 5.008005
+      version 0.70
   Test-Most-0.34
     pathname: O/OV/OVID/Test-Most-0.34.tar.gz
     provides:
@@ -693,6 +808,26 @@ DISTRIBUTIONS
       Test::Harness 3.21
       Test::More 0.88
       Test::Warn 0.23
+  Test-Pod-1.48
+    pathname: D/DW/DWHEELER/Test-Pod-1.48.tar.gz
+    provides:
+      Test::Pod 1.48
+    requirements:
+      File::Find 0
+      File::Spec 0
+      Module::Build 0.30
+      Pod::Simple 3.05
+      Test::Builder::Tester 1.02
+      Test::More 0.62
+  Test-Requires-0.08
+    pathname: T/TO/TOKUHIROM/Test-Requires-0.08.tar.gz
+    provides:
+      Test::Requires 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.64
+      Test::Builder::Module 0
+      Test::More 0.61
+      perl 5.008_001
   Test-Script-1.07
     pathname: A/AD/ADAMK/Test-Script-1.07.tar.gz
     provides:
@@ -731,6 +866,12 @@ DISTRIBUTIONS
       Algorithm::Diff 1.19
       Exporter 0
       ExtUtils::MakeMaker 0
+  Text-Glob-0.09
+    pathname: R/RC/RCLAMP/Text-Glob-0.09.tar.gz
+    provides:
+      Text::Glob 0.09
+    requirements:
+      Test::More 0
   Text-MicroTemplate-0.20
     pathname: K/KA/KAZUHO/Text-MicroTemplate-0.20.tar.gz
     provides:
@@ -818,6 +959,21 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       common::sense 0
+  YAML-Tiny-1.64
+    pathname: E/ET/ETHER/YAML-Tiny-1.64.tar.gz
+    provides:
+      YAML::Tiny 1.64
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      Module::Build::Tiny 0.038
+      Scalar::Util 0
+      perl 5.008001
+      strict 0
+      warnings 0
   bareword-filehandles-0.003
     pathname: I/IL/ILMARI/bareword-filehandles-0.003.tar.gz
     provides:
