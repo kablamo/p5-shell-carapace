@@ -7,7 +7,7 @@ use Types::Standard qw/Maybe/;
 use Types::Path::Tiny qw/Path/;
 use String::ShellQuote;
 
-our $VERSION = "0.10";
+our $VERSION = "0.11";
 
 =head1 NAME
 

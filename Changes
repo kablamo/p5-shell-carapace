@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.11 2015-03-24T23:45:49Z
+    - Die noisely
+
 0.10 2015-02-24T22:02:17Z
     - Made print_cmd attribute read/write.
 
@@ -24,14 +27,14 @@ Revision history for Shell-Carapace
       Moo <1.006000
 
 0.04 2015-02-09T18:54:46Z
-    - allow lgofile attr to be undef
+    - Allow logfile attr to be undef
 
 0.03 2015-02-09T14:25:24Z
-    - made logging to a file optional
+    - Made logging to a file optional
 
 0.02 2015-02-09T11:06:44Z
-    - minor updates to pod
+    - Minor updates to pod
 
 0.01 2015-02-08T23:37:48Z
-    - original version
+    - Original version
 

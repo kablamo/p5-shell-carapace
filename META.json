@@ -28,7 +28,9 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Minilla" : "0"
+            "Minilla" : "0",
+            "Test::MinimumVersion::Fast" : "0",
+            "Test::Pod" : "0"
          }
       },
       "configure" : {
@@ -73,6 +75,6 @@
          "web" : "https://github.com/kablamo/p5-shell-carapace"
       }
    },
-   "version" : "0.10",
+   "version" : "0.11",
    "x_authority" : "cpan:KABLAMO"
 }
