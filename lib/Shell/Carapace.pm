@@ -1,119 +1,122 @@
 package Shell::Carapace;
-use feature qw/say/;
 use Moo;
 
-use Capture::Tiny qw/:all/;
-use Types::Standard qw/Maybe/;
-use Types::Path::Tiny qw/Path/;
+use IPC::Open3::Simple;
 use String::ShellQuote;
+use Carp;
+use Time::Piece;
 
 our $VERSION = "0.11";
 
 =head1 NAME
 
-Shell::Carapace - cpanm style logging for shell commands
+Shell::Carapace - Simple realtime output for ssh and shell commands
 
 =head1 SYNOPSIS
 
     use Shell::Carapace;
 
     my $shell = Shell::Carapace->new(
-        verbose => 1,                   # tee shell cmd output to STDOUT/STDERR
-        logfile => '/path/to/file.log', # tee shell cmd output to logfile
+        host        => $hostname,    # for Net::OpenSSH
+        ssh_options => $ssh_options, # hash for Net::OpenSSH
+        callback    => sub {         # require.  handles cmd output, errors, etc
+            my ($category, $message) = @_;
+            print "  $message\n"        if $category =~ /output/ && $message;
+            print "Running $message\n"  if $category eq 'command';
+            print "ERROR: cmd failed\n" if $category eq 'error';
+        },
     );
 
-    my $output = $shell->local(@cmd);
-    my $output = $shell->remote($user, $host, @cmd);
-
-    # Useful for testing:
-    # The noop attr tells local() to not run the shell cmd
-    # Instead local() will return the cmd as a quoted string
-    $shell->noop(1);
-    my $cmd = $shell->local(@cmd);
+    # these commands throw an exception if @cmd fails
+    $shell->local(@cmd);
+    $shell->remote(@cmd);
 
 =head1 DESCRIPTION
 
-cpanm does a great job of not printing unnecessary output to the screen.  But
-sometimes you need verbose output in order to debug problems.  To solve this
-problem cpanm logs at a verbose level to a logfile.
+Shell::Carapace is a small wrapper around Log::Any, IPC::Open3::Simple,
+Net::OpenSSH.  It provides a callback so you can easily log or process cmd output
+in realtime.  Ever run a script that takes 30 minutes to run and have to wait
+30 minutes to see the output?  This module solve that problem.
 
-This module provides infrastructure so developers can easily add similar
-functionality to their command line applications.
+=head1 METHODS
 
-Shell::Carapace is mostly a small wrapper around Capture::Tiny.
+=head2 new()
 
-=head1 ERROR HANDLING
+All parameters are optional except 'callback'.  The following parameters are accepted:
 
-local() and remote() both die if a command fails by returning a positive exit
-code. 
+   callback    : Required.  A coderef which is executed in realtime as output
+                 is emitted from the command.
+   host        : A string like 'localhost' or 'user@hostname' which is passed
+                 to Net::OpenSSH.  Net::OpenSSH defaults the username to the
+                 current user.  Optional unless using ssh.
+   ssh_options : A hash which is passed to Net::OpenSSH.
+   ipc         : An IPC::Open3::Simple object.  You probably don't need this.
+   ssh         : A Net::OpenSSH object.  You probably don't need this.
 
-=head1 CAVEATS
+=head2 local(@cmd)
 
-Doesn't work on win32.
+Execute the command locally via IPC::Open3::Simple.  Calls the callback in
+realtime for each line of output emitted from the command.
+
+=head3 remote(@cmd)
+
+Execute the command on a remote host via Net::OpenSSH.  Calls the callback in
+realtime for each line of output emitted from the command.
 
 =cut
 
-has verbose     => (is => 'rw',   default => sub { 0 });
-has print_cmd   => (is => 'rw',   default => sub { 0 });
-has ssh_cmd     => (is => 'lazy', default => sub { '/usr/bin/ssh' });
-has ssh_options => (is => 'lazy', default => sub { [] });
-has noop        => (is => 'rw', default => sub { 0 });
-has tee_logfile => (is => 'rw', default => sub { 1 });
-has logfile     => (
-    is      => 'rw',
-    isa     => Maybe[Path],
-    coerce  => Path->coercion,
-    clearer => 1,
-);
+has callback    => (is => 'rw', required => 1);
+has ipc         => (is => 'rw', lazy => 1, builder => 1);
+has ssh         => (is => 'rw', lazy => 1, builder => 1);
+has host        => (is => 'rw', lazy => 1, default => sub { die "host param is required for ssh" });
+has ssh_options => (is => 'rw', lazy => 1, default => sub { {} });
 
-before logfile => sub {
-    my ($self, $logfile) = @_;
-    
-    return unless $logfile;
+sub _build_ipc {
+    my $self = shift;
+    require IPC::Open3::Simple;
+    return  IPC::Open3::Simple->new(
+        out => sub { $self->callback->('local-output', $_[0]) },
+        err => sub { $self->callback->('local-output', $_[0]) },
+    ); 
+}
 
-    die "Logfile is not writeable: $logfile\n"
-        unless -w $logfile;
-
-    die "Logfile is not a file: $logfile\n"
-        unless -f $logfile;
-};
-
-sub remote {
-    my ($self, $user, $host, @cmd) = @_;
-
-    my $ssh_opts = $self->ssh_options;
-    my @ssh_cmd  = @cmd == 1
-        ? (join(" ", $self->ssh_cmd, "$user\@$host", @$ssh_opts, @cmd))
-        : ($self->ssh_cmd, "$user\@$host", @$ssh_opts, @cmd);
-
-    $self->local(@ssh_cmd);
+sub _build_ssh {
+    my $self = shift;
+    require Net::OpenSSH;
+    return Net::OpenSSH->new($self->host, %{ $self->ssh_options });
 }
 
 sub local {
-    my ($self, @cmd) = @_; 
+    my ($self, @cmd) = @_;
 
-    say ">> " . $self->_stringify(@cmd) if $self->verbose || $self->print_cmd;
+    $self->callback->('command', $self->_stringify(@cmd));
 
-    return $self->_stringify(@cmd) if $self->noop;
+    $self->ipc->run(@cmd);
 
-    my $cmd_str = $self->_stringify(@cmd);
-    my %args;
-
-    if ($self->logfile) {
-        $self->logfile->touchpath;
-        $self->logfile->append_utf8(">> $cmd_str\n");
-
-        my $fh = $self->logfile->filehandle('+>>');
-        %args = (stdout => $fh);
+    if ($? != 0) {
+        $self->callback->("error");
+        croak "cmd failed";
     }
+};
 
-    my ($merged_out, $exit) = $self->verbose
-        ? tee_merged     { system @cmd } %args
-        : capture_merged { system @cmd } %args;
+sub remote {
+    my ($self, @cmd) = @_;
 
-    die "ERROR shell command failed:\n  $cmd_str\n" if $exit;
+    $self->callback->('command', $self->_stringify(@cmd));
 
-    return $merged_out;
+    my ($pty, $pid) = $self->ssh->open2pty(@cmd);
+
+    while (my $line = <$pty>) {
+      $line =~ s/([\r\n])$//g;
+      $self->callback->('remote-output', $line);
+    }   
+
+    waitpid($pid, 0);
+
+    if ($? != 0) {
+        $self->callback->("error");
+        croak "cmd failed";
+    }
 }
 
 sub _stringify {
@@ -124,21 +127,7 @@ sub _stringify {
 
 1;
 
-=head1 SEE ALSO
-
-=over 4
-
-=item Capture::Tiny
-
-=item Shell::Cmd
-
-=item Net::OpenSSH
-
-=item IPC::System::Simple
-
-=back
-
-=head1 About the name
+=head1 ABOUT THE NAME
 
 Carapace: n. A protective, shell-like covering likened to that of a turtle or crustacean
 
