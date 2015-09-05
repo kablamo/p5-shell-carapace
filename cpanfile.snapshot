@@ -112,6 +112,15 @@ DISTRIBUTIONS
       File::Spec 0
       File::Which 0
       IPC::Run 0
+  Data-Dumper-Concise-2.022
+    pathname: F/FR/FREW/Data-Dumper-Concise-2.022.tar.gz
+    provides:
+      Data::Dumper::Concise 2.022
+      Data::Dumper::Concise::Sugar undef
+      Devel::Dwarn undef
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      perl 5.006
   Data-Section-Simple-0.07
     pathname: M/MI/MIYAGAWA/Data-Section-Simple-0.07.tar.gz
     provides:
@@ -156,6 +165,18 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Dist-CheckConflicts-0.11
+    pathname: D/DO/DOY/Dist-CheckConflicts-0.11.tar.gz
+    provides:
+      Dist::CheckConflicts 0.11
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      Module::Runtime 0.009
+      base 0
+      strict 0
+      warnings 0
   Exception-Class-1.39
     pathname: D/DR/DROLSKY/Exception-Class-1.39.tar.gz
     provides:
@@ -171,6 +192,26 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Exporter-Declare-0.114
+    pathname: E/EX/EXODIST/Exporter-Declare-0.114.tar.gz
+    provides:
+      Exporter::Declare 0.114
+      Exporter::Declare::Export undef
+      Exporter::Declare::Export::Alias undef
+      Exporter::Declare::Export::Generator undef
+      Exporter::Declare::Export::Sub undef
+      Exporter::Declare::Export::Variable undef
+      Exporter::Declare::Meta undef
+      Exporter::Declare::Specs undef
+    requirements:
+      Carp 0
+      Fennec::Lite 0.004
+      Meta::Builder 0.003
+      Scalar::Util 0
+      Test::Exception 0.29
+      Test::Simple 0.88
+      aliased 0
+      perl v5.8.0
   Exporter-Tiny-0.042
     pathname: T/TO/TOBYINK/Exporter-Tiny-0.042.tar.gz
     provides:
@@ -228,6 +269,15 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Fennec-Lite-0.004
+    pathname: E/EX/EXODIST/Fennec-Lite-0.004.tar.gz
+    provides:
+      Fennec::Lite 0.004
+    requirements:
+      List::Util 0
+      Test::Builder 0
+      Test::More 0
+      perl 5.006
   File-Copy-Recursive-0.38
     pathname: D/DM/DMUEY/File-Copy-Recursive-0.38.tar.gz
     provides:
@@ -310,6 +360,24 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  IO-Tty-1.12
+    pathname: T/TO/TODDR/IO-Tty-1.12.tar.gz
+    provides:
+      IO::Pty 1.12
+      IO::Tty 1.12
+      IO::Tty::Constant undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
+  IPC-Open3-Simple-0.04
+    pathname: E/ER/ERWAN/IPC-Open3-Simple-0.04.tar.gz
+    provides:
+      IPC::Open3::Simple 0.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::Handle 0
+      IO::Select 0
+      IPC::Open3 0
   IPC-Run-0.94
     pathname: T/TO/TODDR/IPC-Run-0.94.tar.gz
     provides:
@@ -351,6 +419,112 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Log-Any-1.032
+    pathname: D/DA/DAGOLDEN/Log-Any-1.032.tar.gz
+    provides:
+      Log::Any 1.032
+      Log::Any::Adapter 1.032
+      Log::Any::Adapter::Base 1.032
+      Log::Any::Adapter::File 1.032
+      Log::Any::Adapter::Null 1.032
+      Log::Any::Adapter::Stderr 1.032
+      Log::Any::Adapter::Stdout 1.032
+      Log::Any::Adapter::Test 1.032
+      Log::Any::Adapter::Util 1.032
+      Log::Any::Manager 1.032
+      Log::Any::Proxy 1.032
+      Log::Any::Proxy::Test 1.032
+      Log::Any::Test 1.032
+    requirements:
+      B 0
+      Carp 0
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      IO::File 0
+      Test::Builder 0
+      base 0
+      constant 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  Log-Any-Adapter-Dispatch-0.06
+    pathname: J/JS/JSWARTZ/Log-Any-Adapter-Dispatch-0.06.tar.gz
+    provides:
+      Log::Any::Adapter::Dispatch 0.06
+    requirements:
+      ExtUtils::MakeMaker 6.42
+      File::Temp 0.20
+      Log::Any::Adapter 0
+      Log::Dispatch 2.26
+      Test::More 0
+  Log-Contextual-0.006005
+    pathname: F/FR/FREW/Log-Contextual-0.006005.tar.gz
+    provides:
+      Log::Contextual 0.006005
+      Log::Contextual::Easy::Default 0.006005
+      Log::Contextual::Easy::Package 0.006005
+      Log::Contextual::Role::Router 0.006005
+      Log::Contextual::Role::Router::SetLogger 0.006005
+      Log::Contextual::Role::Router::WithLogger 0.006005
+      Log::Contextual::Router 0.006005
+      Log::Contextual::SimpleLogger 0.006005
+      Log::Contextual::TeeLogger 0.006005
+      Log::Contextual::WarnLogger 0.006005
+    requirements:
+      Carp 0
+      Data::Dumper::Concise 0
+      Exporter::Declare 0.111
+      ExtUtils::MakeMaker 0
+      Moo 1.003
+      Scalar::Util 0
+  Log-Dispatch-2.50
+    pathname: D/DR/DROLSKY/Log-Dispatch-2.50.tar.gz
+    provides:
+      Log::Dispatch 2.50
+      Log::Dispatch::ApacheLog 2.50
+      Log::Dispatch::Base 2.50
+      Log::Dispatch::Code 2.50
+      Log::Dispatch::Email 2.50
+      Log::Dispatch::Email::MIMELite 2.50
+      Log::Dispatch::Email::MailSend 2.50
+      Log::Dispatch::Email::MailSender 2.50
+      Log::Dispatch::Email::MailSendmail 2.50
+      Log::Dispatch::File 2.50
+      Log::Dispatch::File::Locked 2.50
+      Log::Dispatch::Handle 2.50
+      Log::Dispatch::Null 2.50
+      Log::Dispatch::Output 2.50
+      Log::Dispatch::Screen 2.50
+      Log::Dispatch::Syslog 2.50
+    requirements:
+      Carp 0
+      Devel::GlobalDestruction 0
+      Dist::CheckConflicts 0.02
+      Encode 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      IO::Handle 0
+      Module::Runtime 0
+      Params::Validate 1.03
+      Scalar::Util 0
+      Sys::Syslog 0.28
+      base 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Meta-Builder-0.003
+    pathname: E/EX/EXODIST/Meta-Builder-0.003.tar.gz
+    provides:
+      Meta::Builder 0.003
+      Meta::Builder::Base undef
+      Meta::Builder::Util undef
+    requirements:
+      Carp 0
+      Fennec::Lite 0
+      Test::Exception 0
+      Test::More 0
   Minilla-v2.3.0
     pathname: T/TO/TOKUHIROM/Minilla-v2.3.0.tar.gz
     provides:
@@ -530,6 +704,17 @@ DISTRIBUTIONS
       CPAN::Meta::Prereqs 2.12091
       ExtUtils::MakeMaker 0
       parent 0
+  Module-Implementation-0.09
+    pathname: D/DR/DROLSKY/Module-Implementation-0.09.tar.gz
+    provides:
+      Module::Implementation 0.09
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0.012
+      Try::Tiny 0
+      strict 0
+      warnings 0
   Module-Runtime-0.014
     pathname: Z/ZE/ZEFRAM/Module-Runtime-0.014.tar.gz
     provides:
@@ -572,6 +757,25 @@ DISTRIBUTIONS
       Scalar::Util 0
       perl 5.006
       strictures 1.004003
+  Net-OpenSSH-0.64
+    pathname: S/SA/SALVA/Net-OpenSSH-0.64.tar.gz
+    provides:
+      Net::OpenSSH 0.64
+      Net::OpenSSH::ConnectionCache undef
+      Net::OpenSSH::Constants 0.51_07
+      Net::OpenSSH::ModuleLoader undef
+      Net::OpenSSH::OSTracer 0.58_01
+      Net::OpenSSH::SSH undef
+      Net::OpenSSH::ShellQuoter undef
+      Net::OpenSSH::ShellQuoter::Chain undef
+      Net::OpenSSH::ShellQuoter::MSCmd undef
+      Net::OpenSSH::ShellQuoter::MSWin undef
+      Net::OpenSSH::ShellQuoter::POSIX undef
+      Net::OpenSSH::ShellQuoter::csh undef
+      mod_perl_openssh undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   Number-Compare-0.03
     pathname: R/RC/RCLAMP/Number-Compare-0.03.tar.gz
     provides:
@@ -590,6 +794,25 @@ DISTRIBUTIONS
       Scalar::Util 1.18
       Test::More 0.42
       perl 5.00503
+  Params-Validate-1.21
+    pathname: D/DR/DROLSKY/Params-Validate-1.21.tar.gz
+    provides:
+      Params::Validate 1.21
+      Params::Validate::Constants 1.21
+      Params::Validate::PP 1.21
+      Params::Validate::XS 1.21
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.28
+      Module::Implementation 0
+      Scalar::Util 1.10
+      XSLoader 0
+      perl 5.008001
+      strict 0
+      vars 0
+      warnings 0
   Path-Tiny-0.061
     pathname: D/DA/DAGOLDEN/Path-Tiny-0.061.tar.gz
     provides:
@@ -972,6 +1195,17 @@ DISTRIBUTIONS
       Module::Build::Tiny 0.038
       Scalar::Util 0
       perl 5.008001
+      strict 0
+      warnings 0
+  aliased-0.34
+    pathname: E/ET/ETHER/aliased-0.34.tar.gz
+    provides:
+      aliased 0.34
+    requirements:
+      Carp 0
+      Exporter 0
+      Module::Build::Tiny 0.039
+      perl 5.006
       strict 0
       warnings 0
   bareword-filehandles-0.003

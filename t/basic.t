@@ -1,41 +1,33 @@
 use Test::Most;
 use Shell::Carapace;
-use Path::Tiny;
 
-my $logfile = path('t/boop.log');
-my $shell   = Shell::Carapace->new(logfile => $logfile->stringify);
+my $basic_test = sub {
+    my ($cat, $msg) = @_;
 
-subtest 'list' => sub {
-    $logfile->remove();
-    my $output = $shell->local(qw/echo hi there/);
-    is $output, "hi there\n", "return value";
-    is $logfile->slurp_utf8(), ">> echo hi there\nhi there\n", "log file";
+    is $msg, "hi there", $cat       if $cat eq 'local-output';
+    is $msg, "echo hi there", $cat  if $cat eq 'command';
+    fail "should not have an error" if $cat eq 'error';
 };
 
-subtest 'dies ok' => sub {
-    dies_ok { $shell->local(qw/ls sdflk823jfsk3adffsupercalifragilistic/) } 'dead';
+my $shell = Shell::Carapace->new(callback => $basic_test);
+
+subtest 'list' => sub {
+    $shell->callback($basic_test);
+    $shell->local(qw/echo hi there/);
 };
 
 subtest 'string' => sub {
-    $logfile->remove();
-    my $output = $shell->local('echo hi there');
-    is $output, "hi there\n", "return value";
-    is $logfile->slurp_utf8(), ">> echo hi there\nhi there\n", "log file";
+    $shell->callback($basic_test);
+    $shell->local('echo hi there');
 };
 
-subtest 'logfile not writable' => sub {
-    $logfile->remove();
-    $logfile->touchpath();
-    system("chmod u-w $logfile");
-    dies_ok { $shell->logfile($logfile) } 'dies';
-};
-
-subtest 'no logfile' => sub {
-    $logfile->remove();
-    $shell->clear_logfile();
-    my $output = $shell->local(qw/echo hi there/);
-    is $output, "hi there\n", "return value";
-    ok !$logfile->exists, "did not create a log file";
+subtest 'dies ok' => sub {
+    my $test = sub {
+        my ($cat, $msg) = @_;
+        pass "error" if $cat eq 'error';
+    };
+    $shell->callback($test);
+    dies_ok { $shell->local(qw/ls sdflk823jfsk3adffsupercalifragilistic/) } 'dead';
 };
 
 done_testing;

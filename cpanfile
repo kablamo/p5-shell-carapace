@@ -1,9 +1,8 @@
 requires 'Moo';
-requires 'Capture::Tiny';
-requires 'Types::Path::Tiny';
-requires 'Path::Tiny';
 requires 'String::ShellQuote';
-requires 'Types::Standard';
+requires 'IPC::Open3::Simple';
+requires 'Net::OpenSSH';
+requires 'IO::Pty';
 
 on 'test' => sub {
     requires 'Test::Most';
