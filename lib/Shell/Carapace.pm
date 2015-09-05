@@ -6,7 +6,7 @@ use String::ShellQuote;
 use Carp;
 use Time::Piece;
 
-our $VERSION = "0.11";
+our $VERSION = "0.12";
 
 =head1 NAME
 

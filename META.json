@@ -1,5 +1,5 @@
 {
-   "abstract" : "cpanm style logging for shell commands",
+   "abstract" : "Simple realtime output for ssh and shell commands",
    "author" : [
       "Eric Johnson <eric.git@iijo.org>"
    ],
@@ -49,12 +49,11 @@
       },
       "runtime" : {
          "requires" : {
-            "Capture::Tiny" : "0",
+            "IO::Pty" : "0",
+            "IPC::Open3::Simple" : "0",
             "Moo" : "0",
-            "Path::Tiny" : "0",
-            "String::ShellQuote" : "0",
-            "Types::Path::Tiny" : "0",
-            "Types::Standard" : "0"
+            "Net::OpenSSH" : "0",
+            "String::ShellQuote" : "0"
          }
       },
       "test" : {
@@ -75,6 +74,9 @@
          "web" : "https://github.com/kablamo/p5-shell-carapace"
       }
    },
-   "version" : "0.11",
-   "x_authority" : "cpan:KABLAMO"
+   "version" : "0.12",
+   "x_authority" : "cpan:KABLAMO",
+   "x_contributors" : [
+      "Eric Johnson <github@iijo.org>"
+   ]
 }

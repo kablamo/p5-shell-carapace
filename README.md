@@ -1,54 +1,60 @@
 [![Build Status](https://travis-ci.org/kablamo/p5-shell-carapace.svg?branch=master)](https://travis-ci.org/kablamo/p5-shell-carapace) [![Coverage Status](https://img.shields.io/coveralls/kablamo/p5-shell-carapace/master.svg)](https://coveralls.io/r/kablamo/p5-shell-carapace?branch=master)
 # NAME
 
-Shell::Carapace - cpanm style logging for shell commands
+Shell::Carapace - Simple realtime output for ssh and shell commands
 
 # SYNOPSIS
 
     use Shell::Carapace;
 
     my $shell = Shell::Carapace->new(
-        verbose => 1,                   # tee shell cmd output to STDOUT/STDERR
-        logfile => '/path/to/file.log', # tee shell cmd output to logfile
+        host        => $hostname,    # for Net::OpenSSH
+        ssh_options => $ssh_options, # hash for Net::OpenSSH
+        callback    => sub {         # require.  handles cmd output, errors, etc
+            my ($category, $message) = @_;
+            print "  $message\n"        if $category =~ /output/ && $message;
+            print "Running $message\n"  if $category eq 'command';
+            print "ERROR: cmd failed\n" if $category eq 'error';
+        },
     );
 
-    my $output = $shell->local(@cmd);
-    my $output = $shell->remote($user, $host, @cmd);
-
-    # Useful for testing:
-    # The noop attr tells local() to not run the shell cmd
-    # Instead local() will return the cmd as a quoted string
-    $shell->noop(1);
-    my $cmd = $shell->local(@cmd);
+    # these commands throw an exception if @cmd fails
+    $shell->local(@cmd);
+    $shell->remote(@cmd);
 
 # DESCRIPTION
 
-cpanm does a great job of not printing unnecessary output to the screen.  But
-sometimes you need verbose output in order to debug problems.  To solve this
-problem cpanm logs at a verbose level to a logfile.
+Shell::Carapace is a small wrapper around Log::Any, IPC::Open3::Simple,
+Net::OpenSSH.  It provides a callback so you can easily log or process cmd output
+in realtime.  Ever run a script that takes 30 minutes to run and have to wait
+30 minutes to see the output?  This module solve that problem.
 
-This module provides infrastructure so developers can easily add similar
-functionality to their command line applications.
+# METHODS
 
-Shell::Carapace is mostly a small wrapper around Capture::Tiny.
+## new()
 
-# ERROR HANDLING
+All parameters are optional except 'callback'.  The following parameters are accepted:
 
-local() and remote() both die if a command fails by returning a positive exit
-code. 
+    callback    : Required.  A coderef which is executed in realtime as output
+                  is emitted from the command.
+    host        : A string like 'localhost' or 'user@hostname' which is passed
+                  to Net::OpenSSH.  Net::OpenSSH defaults the username to the
+                  current user.  Optional unless using ssh.
+    ssh_options : A hash which is passed to Net::OpenSSH.
+    ipc         : An IPC::Open3::Simple object.  You probably don't need this.
+    ssh         : A Net::OpenSSH object.  You probably don't need this.
 
-# CAVEATS
+## local(@cmd)
 
-Doesn't work on win32.
+Execute the command locally via IPC::Open3::Simple.  Calls the callback in
+realtime for each line of output emitted from the command.
 
-# SEE ALSO
+### remote(@cmd)
 
-- Capture::Tiny
-- Shell::Cmd
-- Net::OpenSSH
-- IPC::System::Simple
+Execute the command on a remote host via Net::OpenSSH.  Calls the callback in
+realtime for each line of output emitted from the command.
 
-# About the name
+# ABOUT THE NAME
 
 Carapace: n. A protective, shell-like covering likened to that of a turtle or crustacean
 
