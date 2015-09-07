@@ -40,19 +40,21 @@ It provides a callback so you can easily log or process cmd output in realtime.
 
 =head2 shell(%options)
 
-All parameters are optional except 'callback'.  The following parameters are accepted:
+Creates and returns a Shell::Carapace::Shell object.  All parameters are
+optional except 'callback'.  The following parameters are accepted:
 
    callback    : Required.  A coderef which is executed in realtime as output
 
 =head2 ssh(%options)
 
-All parameters are optional except 'callback'.  The following parameters are accepted:
+Creates and returns a Shell::Carapace::SSH object.  All parameters are optional
+except 'callback'.  The following parameters are accepted:
 
    callback    : Required.  A coderef which is executed in realtime as output
                  is emitted from the command.
-   host        : A string like 'localhost' or 'user@hostname' which is passed
-                 to Net::OpenSSH.  Net::OpenSSH defaults the username to the
-                 current user.  Optional unless using ssh.
+   host        : Required.  A string like 'localhost' or 'user@hostname' which
+                 is passed to Net::OpenSSH.  Net::OpenSSH defaults the username
+                 to the current user.
    ssh_options : A hash which is passed to Net::OpenSSH.
 
 =head2 $shell->run(@cmd)
@@ -60,7 +62,7 @@ All parameters are optional except 'callback'.  The following parameters are acc
 Execute the command locally via IPC::Open3::Simple.  Calls the callback in
 realtime for each line of output emitted from the command.
 
-=head3 $ssh->run(@cmd)
+=head2 $ssh->run(@cmd)
 
 Execute the command on a remote host via Net::OpenSSH.  Calls the callback in
 realtime for each line of output emitted from the command.
