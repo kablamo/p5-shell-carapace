@@ -2,8 +2,13 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.13 2015-09-07T03:05:55Z
+    - Major rewrite.  Not backwards compatible at all.  Splits module into two
+      parts -- Shell::Carapace::Shell and Shell::Carapace::SSH.
+
 0.12 2015-09-05T20:20:50Z
-    - Major rewrite.  Not backwards compatible at all.
+    - Major rewrite.  Not backwards compatible at all.  Introduces callback
+      concept.
 
 0.11 2015-03-24T23:45:49Z
     - Die noisely
