@@ -1,4 +1,4 @@
-use Test::Most skip_all => 'requires ssh';
+use Test::Most;# skip_all => 'requires ssh';
 use Shell::Carapace;
 
 my $basic_test = sub {
@@ -9,16 +9,16 @@ my $basic_test = sub {
     fail "should not have an error" if $cat eq 'error';
 };
 
-my $shell = Shell::Carapace->new(host => 'localhost', callback => $basic_test);
+my $ssh = Shell::Carapace->ssh(host => 'localhost', callback => $basic_test);
 
 subtest 'list' => sub {
-    $shell->callback($basic_test);
-    $shell->remote(qw/echo hi there/);
+    $ssh->callback($basic_test);
+    $ssh->run(qw/echo hi there/);
 };
 
 subtest 'string' => sub {
-    $shell->callback($basic_test);
-    $shell->remote('echo hi there');
+    $ssh->callback($basic_test);
+    $ssh->run('echo hi there');
 };
 
 subtest 'dies ok' => sub {
@@ -26,8 +26,8 @@ subtest 'dies ok' => sub {
         my ($cat, $msg) = @_;
         pass "error" if $cat eq 'error';
     };
-    $shell->callback($test);
-    dies_ok { $shell->remote(qw/ls sdflk823jfsk3adffsupercalifragilistic/) } 'dead';
+    $ssh->callback($test);
+    dies_ok { $ssh->run(qw/ls sdflk823jfsk3adffsupercalifragilistic/) } 'dead';
 };
 
 done_testing;
