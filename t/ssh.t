@@ -1,4 +1,4 @@
-use Test::Most skip_all => 'requires ssh';
+use Test::Most;# skip_all => 'requires ssh';
 use Shell::Carapace;
 use Sys::Hostname;
 
@@ -27,7 +27,7 @@ subtest 'dies ok' => sub {
     my $test = sub {
         my ($cat, $msg, $host) = @_;
 
-        is $host, "localhost", $cat;
+        is $host, "eric", $cat;
         is $msg,  "ls sdfljfskfsupercalifragilistic", $cat 
             if $cat eq any(qw/error command/);
     };
