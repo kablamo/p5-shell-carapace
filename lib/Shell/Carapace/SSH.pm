@@ -19,19 +19,19 @@ sub _build_ssh {
 sub run {
     my ($self, @cmd) = @_;
 
-    $self->callback->('command', $self->_stringify(@cmd));
+    $self->callback->('command', $self->_stringify(@cmd), $self->host);
 
     my ($pty, $pid) = $self->ssh->open2pty(@cmd);
 
     while (my $line = <$pty>) {
       $line =~ s/([\r\n])$//g;
-      $self->callback->('remote-output', $line);
+      $self->callback->('remote-output', $line, $self->host);
     }   
 
     waitpid($pid, 0);
 
     if ($? != 0) {
-        $self->callback->("error");
+        $self->callback->("error", undef, $self->host);
         croak "cmd failed";
     }
 }

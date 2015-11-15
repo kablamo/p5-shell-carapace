@@ -1,15 +1,17 @@
 use Test::Most;# skip_all => 'requires ssh';
 use Shell::Carapace;
+use Sys::Hostname;
 
 my $basic_test = sub {
-    my ($cat, $msg) = @_;
+    my ($cat, $msg, $host) = @_;
 
     is $msg, "hi there", $cat       if $cat eq 'remote-output';
     is $msg, "echo hi there", $cat  if $cat eq 'command';
+    is $host, "eric", $cat;
     fail "should not have an error" if $cat eq 'error';
 };
 
-my $ssh = Shell::Carapace->ssh(host => 'localhost', callback => $basic_test);
+my $ssh = Shell::Carapace->ssh(host => 'eric', callback => $basic_test);
 
 subtest 'list' => sub {
     $ssh->callback($basic_test);
