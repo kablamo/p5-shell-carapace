@@ -74,7 +74,7 @@
          "web" : "https://github.com/kablamo/p5-shell-carapace"
       }
    },
-   "version" : "0.13",
+   "version" : "0.14",
    "x_authority" : "cpan:KABLAMO",
    "x_contributors" : [
       "Eric Johnson <github@iijo.org>"

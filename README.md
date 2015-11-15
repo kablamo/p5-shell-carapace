@@ -7,9 +7,10 @@ Shell::Carapace - Simple realtime output for ssh and shell commands
 
     use Shell::Carapace::Local;
 
-    my $callback = sub {         # require.  handles cmd output, errors, etc
-        my ($category, $message) = @_;
-        print "  $message\n"        if $category =~ /output/ && $message;
+    # A callback is required.  It can be used to log commands, output, errors
+    my $shell_callback = sub {
+        my ($category, $message, $host) = @_;
+        print "  $host $message\n"  if $category =~ /output/ && $message;
         print "Running $message\n"  if $category eq 'command';
         print "ERROR: cmd failed\n" if $category eq 'error';
     };
