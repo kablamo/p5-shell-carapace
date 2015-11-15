@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.15 2015-11-15T02:27:26Z
+    - Skip t/ssh.t
+
 0.14 2015-11-15T02:22:03Z
     - Now passing a hostname to the callback
 
