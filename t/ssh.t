@@ -25,11 +25,15 @@ subtest 'string' => sub {
 
 subtest 'dies ok' => sub {
     my $test = sub {
-        my ($cat, $msg) = @_;
-        pass "error" if $cat eq 'error';
+        my ($cat, $msg, $host) = @_;
+
+        is $host, "localhost", $cat;
+        is $msg,  "ls sdfljfskfsupercalifragilistic", $cat 
+            if $cat eq any(qw/error command/);
     };
+
     $ssh->callback($test);
-    dies_ok { $ssh->run(qw/ls sdflk823jfsk3adffsupercalifragilistic/) } 'dead';
+    dies_ok { $ssh->run(qw/ls sdfljfskfsupercalifragilistic/) } 'dead';
 };
 
 done_testing;

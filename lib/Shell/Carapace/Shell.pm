@@ -25,7 +25,7 @@ sub run {
     $self->ipc->run(@cmd);
 
     if ($? != 0) {
-        $self->callback->("error", undef, 'localhost');
+        $self->callback->("error", $self->_stringify(@cmd), 'localhost');
         croak "cmd failed";
     }
 };

@@ -31,7 +31,7 @@ sub run {
     waitpid($pid, 0);
 
     if ($? != 0) {
-        $self->callback->("error", undef, $self->host);
+        $self->callback->("error", $self->_stringify(@cmd), $self->host);
         croak "cmd failed";
     }
 }
