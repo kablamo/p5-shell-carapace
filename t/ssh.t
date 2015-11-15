@@ -1,4 +1,4 @@
-use Test::Most;# skip_all => 'requires ssh';
+use Test::Most skip_all => 'requires ssh';
 use Shell::Carapace;
 use Sys::Hostname;
 
