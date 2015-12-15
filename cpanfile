@@ -6,6 +6,7 @@ requires 'IO::Pty';
 
 on 'test' => sub {
     requires 'Test::Most';
+    requires 'Test::Fatal';
 };
 
 on 'build' => sub {
