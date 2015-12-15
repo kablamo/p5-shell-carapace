@@ -2,6 +2,10 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.18 2015-12-15T13:46:06Z
+    - Added Test::Fatal to the cpanfile
+    - Made Minilla a 'develop' dependency in the cpanfile
+
 0.17 2015-12-15T13:39:24Z
     - Die if ssh connection can't be established.
 

@@ -863,6 +863,18 @@ DISTRIBUTIONS
       Test::Harness 2.03
       Test::More 0.7
       Test::Simple 0.7
+  Test-Fatal-0.013
+    pathname: R/RJ/RJBS/Test-Fatal-0.013.tar.gz
+    provides:
+      Test::Fatal 0.013
+    requirements:
+      Carp 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.30
+      Test::Builder 0
+      Try::Tiny 0.07
+      strict 0
+      warnings 0
   Test-Harness-3.30
     pathname: L/LE/LEONT/Test-Harness-3.30.tar.gz
     provides:

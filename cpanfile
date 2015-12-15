@@ -12,8 +12,8 @@ on 'test' => sub {
 on 'build' => sub {
     requires 'Test::MinimumVersion::Fast';
     requires 'Test::Pod';
-}
+};
 
 on 'develop' => sub {
     requires 'Minilla';
-}
+};

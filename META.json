@@ -28,7 +28,6 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Minilla" : "0",
             "Test::MinimumVersion::Fast" : "0",
             "Test::Pod" : "0"
          }
@@ -40,6 +39,7 @@
       },
       "develop" : {
          "requires" : {
+            "Minilla" : "0",
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion::Fast" : "0.04",
             "Test::PAUSE::Permissions" : "0.04",
@@ -58,6 +58,7 @@
       },
       "test" : {
          "requires" : {
+            "Test::Fatal" : "0",
             "Test::Most" : "0"
          }
       }
@@ -74,7 +75,7 @@
          "web" : "https://github.com/kablamo/p5-shell-carapace"
       }
    },
-   "version" : "0.17",
+   "version" : "0.18",
    "x_authority" : "cpan:KABLAMO",
    "x_contributors" : [
       "Eric Johnson <github@iijo.org>"
