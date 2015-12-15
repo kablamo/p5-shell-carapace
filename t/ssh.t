@@ -1,4 +1,8 @@
-use Test::Most skip_all => 'requires ssh';
+use strict;
+use warnings;
+
+use Test::More skip_all => 'requires ssh';
+use Test::Fatal qw/dies_ok/;
 use Shell::Carapace;
 use Sys::Hostname;
 
@@ -10,6 +14,13 @@ my $basic_test = sub {
     is $host, "eric", $cat;
     fail "should not have an error" if $cat eq 'error';
 };
+
+dies_ok { 
+    my $ssh = Shell::Carapace->ssh(
+        host     => 'asdfasdfasf999999',
+    );
+    $ssh->run(qw/echo hi there/);
+}, "dies if can't connect to the host";
 
 my $ssh = Shell::Carapace->ssh(host => 'eric', callback => $basic_test);
 

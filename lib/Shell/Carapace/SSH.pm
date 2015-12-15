@@ -13,7 +13,9 @@ has ssh         => (is => 'rw', lazy => 1, builder => 1);
 sub _build_ssh {
     my $self = shift;
     require Net::OpenSSH;
-    return Net::OpenSSH->new($self->host, %{ $self->ssh_options });
+    my $ssh = Net::OpenSSH->new($self->host, %{ $self->ssh_options });
+    die $ssh->error if $ssh->error;
+    return $ssh;
 }
 
 sub run {
