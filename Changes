@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.20 2015-12-21T19:15:26Z
+    - Last release broke handling of ssh_options attr.  This fixes it.
+
 0.19 2015-12-21T16:16:21Z
     - Don't connect to remote host lazily -- connect on instantiation.
 

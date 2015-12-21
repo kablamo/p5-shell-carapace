@@ -1,7 +1,7 @@
 package Shell::Carapace;
 use Moo;
 
-our $VERSION = "0.19";
+our $VERSION = "0.20";
 
 =head1 NAME
 
