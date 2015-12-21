@@ -15,12 +15,9 @@ my $basic_test = sub {
     fail "should not have an error" if $cat eq 'error';
 };
 
-dies_ok { 
-    my $ssh = Shell::Carapace->ssh(
-        host     => 'asdfasdfasf999999',
-    );
-    $ssh->run(qw/echo hi there/);
-}, "dies if can't connect to the host";
+dies_ok 
+    { Shell::Carapace->ssh(host => 'asdfasdfasf999999') },
+    "dies if can't connect to the host";
 
 my $ssh = Shell::Carapace->ssh(host => 'eric', callback => $basic_test);
 
