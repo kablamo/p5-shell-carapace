@@ -1,7 +1,6 @@
 package Shell::Carapace::Shell;
 use Moo;
 
-use IPC::Open3::Simple;
 use String::ShellQuote;
 use Carp;
 

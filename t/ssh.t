@@ -19,7 +19,11 @@ dies_ok
     { Shell::Carapace->ssh(host => 'asdfasdfasf999999') },
     "dies if can't connect to the host";
 
-my $ssh = Shell::Carapace->ssh(host => 'eric', callback => $basic_test);
+my $ssh = Shell::Carapace->ssh(
+    host        => 'eric', 
+    ssh_options => { user => 'eric' },
+    callback    => $basic_test, 
+);
 
 subtest 'list' => sub {
     $ssh->callback($basic_test);

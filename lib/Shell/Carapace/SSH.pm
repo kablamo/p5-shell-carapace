@@ -1,22 +1,25 @@
 package Shell::Carapace::SSH;
 use Moo;
 
-use Net::OpenSSH;
 use String::ShellQuote;
 use Carp;
 
 has callback    => (is => 'rw', required => 1);
 has host        => (is => 'rw', required => 1);
 has ssh_options => (is => 'rw', default => sub { {} });
-has ssh         => (is => 'rw', builder => 1);
+has ssh         => (is => 'rw', lazy => 1, builder => 1);
 
 sub _build_ssh {
     my $self = shift;
     require Net::OpenSSH;
-    my $ssh = Net::OpenSSH->new($self->host, %{ $self->ssh_options });
+    my %ssh_options = $self->ssh_options ? %{ $self->ssh_options } : ();
+    my $ssh = Net::OpenSSH->new($self->host, %ssh_options);
     die $ssh->error if $ssh->error;
     return $ssh;
 }
+
+# force ssh builder to run so the connection occurs during object instantiation
+sub BUILD { shift->ssh }
 
 sub run {
     my ($self, @cmd) = @_;
