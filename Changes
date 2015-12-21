@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.22 2015-12-21T21:54:00Z
+    - Another attempt to deal with open2pty() failures correctly.
+
 0.21 2015-12-21T20:55:22Z
     - Retry if open2pty() fails and then die if it fails again.
 
