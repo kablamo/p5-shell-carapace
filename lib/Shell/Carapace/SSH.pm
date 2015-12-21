@@ -7,7 +7,7 @@ use Carp;
 
 has callback    => (is => 'rw', required => 1);
 has host        => (is => 'rw', required => 1);
-has ssh_options => (is => 'rw', lazy => 1, default => sub { {} });
+has ssh_options => (is => 'rw', default => sub { {} });
 has ssh         => (is => 'rw', builder => 1);
 
 sub _build_ssh {
