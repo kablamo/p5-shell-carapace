@@ -4,10 +4,11 @@ use Moo;
 use String::ShellQuote;
 use Carp;
 
-has callback    => (is => 'rw', required => 1);
-has host        => (is => 'rw', required => 1);
-has ssh_options => (is => 'rw', default => sub { {} });
-has ssh         => (is => 'rw', lazy => 1, builder => 1);
+has callback         => (is => 'rw', required => 1);
+has host             => (is => 'rw', required => 1);
+has ssh_options      => (is => 'rw', default => sub { {} });
+has ssh              => (is => 'rw', lazy => 1, builder => 1);
+has connect_attempts => (is => 'rw', default => sub { 3 });
 
 sub _build_ssh {
     my $self = shift;
@@ -27,6 +28,11 @@ sub run {
     $self->callback->('command', $self->_stringify(@cmd), $self->host);
 
     my ($pty, $pid) = $self->ssh->open2pty(@cmd);
+    if (!$pty || $self->ssh->error) {
+        $self->clear_ssh; # force new connection to the server
+        ($pty, $pid) = $self->ssh->open2pty(@cmd);
+        die $self->ssh->error if $self->ssh->error;
+    }
 
     while (my $line = <$pty>) {
       $line =~ s/([\r\n])$//g;
