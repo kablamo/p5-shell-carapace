@@ -2,6 +2,9 @@ Revision history for Shell-Carapace
 
 {{$NEXT}}
 
+0.21 2015-12-21T20:55:22Z
+    - Retry if open2pty() fails and then die if it fails again.
+
 0.20 2015-12-21T19:15:26Z
     - Last release broke handling of ssh_options attr.  This fixes it.
 
